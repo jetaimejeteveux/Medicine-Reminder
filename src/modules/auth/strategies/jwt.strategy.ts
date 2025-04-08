@@ -8,7 +8,7 @@ import { JwtPayload } from 'src/common/types/jwt-payload.interface';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(configService: ConfigService) {
-    const jwtSecret = configService.get<string>('JWT_SECRET');
+    const jwtSecret = configService.get<string>('JWT_SECRET_KEY');
     if (!jwtSecret) {
       throw new Error('JWT_SECRET is not defined');
     }
