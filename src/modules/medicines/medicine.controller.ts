@@ -11,10 +11,7 @@ export class MedicineController {
   constructor(private readonly medicineService: MedicineService) {}
 
   @Post()
-  create(
-    @CurrentUser() user: CurrentUserPayload,
-    createMedicineDto: CreateMedicineDto,
-  ) {
+  create(@CurrentUser() user: CurrentUserPayload, createMedicineDto: CreateMedicineDto) {
     return this.medicineService.create(user.userId, createMedicineDto);
   }
 

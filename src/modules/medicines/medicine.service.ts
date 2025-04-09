@@ -32,11 +32,7 @@ export class MedicineService {
     });
   }
 
-  async update(
-    userId: number,
-    id: number,
-    updateMedicineDto: UpdateMedicineDto,
-  ) {
+  async update(userId: number, id: number, updateMedicineDto: UpdateMedicineDto) {
     const medicine = await this.prisma.medicine.findFirst({
       where: { id, userId },
     });
