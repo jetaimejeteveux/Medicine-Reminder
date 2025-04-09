@@ -9,7 +9,7 @@ export class MedicineService {
 
   async create(userId: number, createMedicineDto: CreateMedicineDto) {
     // Set schedule to every 8 hours for MVP
-    const schedule = '0 */8 * * *';
+    const schedule = createMedicineDto.schedule ?? '0 */8 * * *';
 
     return this.prisma.medicine.create({
       data: {

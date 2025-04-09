@@ -8,4 +8,8 @@ export class UpdateMedicineDto {
   @IsString()
   @IsOptional()
   dosage?: string;
+
+  @IsString()
+  @IsOptional()
+  schedule?: string;
 }

@@ -1,4 +1,4 @@
-import { Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { MedicineService } from './medicine.service';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
@@ -7,6 +7,7 @@ import { CreateMedicineDto } from './dto/create-medicines.dto';
 import { UpdateMedicineDto } from './dto/update-medicines.dto';
 
 @UseGuards(JwtAuthGuard)
+@Controller('medicines')
 export class MedicineController {
   constructor(private readonly medicineService: MedicineService) {}
 
