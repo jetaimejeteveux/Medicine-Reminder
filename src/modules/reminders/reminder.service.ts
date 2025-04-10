@@ -2,12 +2,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { PrismaService } from 'prisma/prisma.service';
 import * as cronParser from 'cron-parser';
+import { EmailService } from '../notifications/email.service';
 
 @Injectable()
 export class ReminderService {
   private readonly logger = new Logger(ReminderService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly email: EmailService,
+  ) {}
 
   @Cron('* * * * *')
   async handleCron() {
@@ -30,7 +34,7 @@ export class ReminderService {
         this.logger.log(
           `Sending reminder to ${medicine.user.name} through ${medicine.user.email} for ${medicine.name}`,
         );
-        await this.sendReminderEmail(
+        await this.email.sendMedicineReminder(
           medicine.user.email,
           medicine.user.name,
           medicine.name,
@@ -38,22 +42,6 @@ export class ReminderService {
         );
       }
     }
-  }
-
-  sendReminderEmail(
-    userEmail: string,
-    username: string,
-    medicineName: string,
-    medicineDosage: string,
-  ) {
-    this.logger.log(
-      `Sending email to ${userEmail}. \n\n Hi ${username} do not forget to take your medicine = ${medicineName} with ${medicineDosage}`,
-    );
-    return Promise.resolve({
-      success: true,
-      recipient: userEmail,
-      message: `Medicine reminder for ${medicineName}`,
-    });
   }
 
   shouldSendReminder(medicineSchedule: string, currentTime: Date): boolean {
