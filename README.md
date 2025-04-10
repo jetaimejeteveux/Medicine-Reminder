@@ -1,53 +1,55 @@
+Tentu! Berikut versi bahasa Inggris dari README-nya dalam format Markdown:
+
+```markdown
 # 🩺 Medicine Reminder System
 
-Medicine Reminder System adalah aplikasi backend berbasis [NestJS](https://nestjs.com/) yang digunakan untuk mengingatkan pengguna agar tidak lupa mengonsumsi obat sesuai jadwal. Pengingat dikirim melalui email setiap interval tertentu.
+Medicine Reminder System is a backend application built with [NestJS](https://nestjs.com/) to help users remember to take their medicines on time. Email reminders are sent at a fixed interval.
 
-## ✨ Fitur
+## ✨ Features
 
-- CRUD Obat (Medicine)
-- Penjadwalan pengingat (cron job) setiap 8 jam
-- Pengiriman email otomatis menggunakan Nodemailer
-- Validasi data menggunakan class-validator
-- Konfigurasi environment dengan dotenv
-- Logging bawaan NestJS
+- CRUD for Medicines
+- Reminder scheduling (cron job every 8 hours)
+- Automatic email sending using Nodemailer
+- Input validation using `class-validator`
+- Environment-based configuration
+- Built-in logging with NestJS
 
-## 🛠️ Teknologi
+## 🛠️ Tech Stack
 
 - [NestJS](https://nestjs.com/)
 - [Prisma ORM](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Nodemailer](https://nodemailer.com/)
 - [Sendinblue SMTP](https://app.sendinblue.com/)
-- [Cron Job](https://docs.nestjs.com/techniques/tasks)
+- [Cron Jobs](https://docs.nestjs.com/techniques/tasks)
 
-## 🧪 Testing Manual Cron
+## 🧪 Manual Cron Testing
 
-Untuk menguji fungsi cron tanpa menunggu waktu tertentu, tersedia endpoint:
-
+To manually trigger a cron job without waiting for the scheduled time, you can call this endpoint:
 ```
 
 GET /api/test-cron
 
-```
+````
 
-## ⚙️ Instalasi
+## ⚙️ Setup Instructions
 
-1. **Clone repositori**
+1. **Clone the repository**
 
 ```bash
-git clone https://github.com/namamu/medicine-reminder.git
+git clone https://github.com/yourname/medicine-reminder.git
 cd medicine-reminder
-```
+````
 
-2. **Instal dependensi**
+2. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-3. **Konfigurasi environment**
+3. **Configure environment variables**
 
-Buat file `.env`:
+Create a `.env` file:
 
 ```env
 DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/medicine_reminder?schema=public
@@ -60,29 +62,38 @@ EMAIL_HOST=smtp-relay.sendinblue.com
 EMAIL_PORT=587
 ```
 
-> 🛡️ Tips: Gunakan aplikasi seperti [Sendinblue](https://www.sendinblue.com/) untuk SMTP gratis tanpa harus pakai Gmail.
+> 🛡️ Tip: You can use [Sendinblue](https://www.sendinblue.com/) as a free SMTP provider without needing Gmail.
 
-4. **Generate Prisma**
+4. **Generate Prisma Client**
 
 ```bash
 npx prisma generate
 npx prisma migrate dev --name init
 ```
 
-5. **Jalankan aplikasi**
+5. **Run the app**
 
 ```bash
 npm run start:dev
 ```
 
-## 📫 Contoh Email Reminder
+## 📫 Example Reminder Email
 
-```html
-Subject: Reminder: Time to take Paracetamol Hello Firman, It's time to take your medication:
-Paracetamol Dosage: 500mg Best regards, Your Medicine Reminder App
+```text
+Subject: Reminder: Time to take Paracetamol
+
+Hello Firman,
+
+It's time to take your medication:
+
+Paracetamol
+Dosage: 500mg
+
+Best regards,
+Your Medicine Reminder App
 ```
 
-## 📁 Struktur Folder
+## 📁 Project Structure
 
 ```
 src/
@@ -95,22 +106,6 @@ src/
 └── app.module.ts
 ```
 
-## 🚀 Rencana Pengembangan
+## 🧑‍💻 Contributing
 
-- [ ] Reminder berdasarkan interval spesifik per obat
-- [ ] Dashboard pengguna
-- [ ] Reminder via WhatsApp/Telegram
-- [ ] Autentikasi & RBAC
-
-## 🧑‍💻 Kontribusi
-
-Pull Request terbuka untuk perbaikan bug, penambahan fitur, atau peningkatan dokumentasi!
-
-## 📄 Lisensi
-
-MIT License.
-
-```
-
-Kalau kamu butuh README versi berbahasa Inggris atau ingin ditambah badge dan gambar diagram arsitektur, tinggal bilang aja ya.
-```
+Pull requests are welcome for bug fixes, new features, or documentation improvements.
