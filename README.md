@@ -20,7 +20,7 @@ Medicine Reminder System is a backend application built with [NestJS](https://ne
 - [Prisma ORM](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Nodemailer](https://nodemailer.com/)
-- [Sendinblue SMTP](https://app.sendinblue.com/)
+- [Sendinblue SMTP / Brevo](https://app.brevo.com/)
 - [Cron Jobs](https://docs.nestjs.com/techniques/tasks)
 
 ## 🧪 Manual Cron Testing
